@@ -1,0 +1,22 @@
+/* @import url('../fontawesome-free-6.6.0-web/css/all.min.css'); */
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Rokkit'
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    height: auto; 
+}
+
+.nav .title{
+    margin-left: 5%;
+}

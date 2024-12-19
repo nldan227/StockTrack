@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+    <title>Trang chủ</title>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  
+    const dropdownToggle = document.querySelector(".dropdown-toggle");
+    const dropdownMenu = document.querySelector(".dropdown");
+    if (dropdownToggle && dropdownMenu) {
+    dropdownToggle.addEventListener("click", function() {
+        dropdownMenu.classList.toggle("open"); // Mở/đóng danh sách con //dropdownMenu.classList.toggle("open"); sẽ thêm lớp "open" nếu nó không có hoặc xóa lớp "open" nếu nó đã có.
+
+        if (dropdownMenu.classList.contains("open")) {
+            dropdownMenu.style.display = "block";
+            dropdownMenu.style.maxHeight = dropdownMenu.scrollHeight + "px"; // Mở rộng danh sách với chiều cao tự động
+            dropdownToggle.classList.add('selected');
+        } else {
+            dropdownMenu.style.maxHeight = "0"; // Ẩn danh sách với hiệu ứng trượt lên
+            dropdownToggle.classList.remove('selected');
+            setTimeout(function() {
+                dropdownMenu.style.display = "none";
+            }, 500); // Chờ hiệu ứng hoàn thành trước khi ẩn hoàn toàn
+        }
+    });
+};
+    const subDivs = document.querySelectorAll(".sub-menu");
+
+    subDivs.forEach(function(div) {
+        div.addEventListener("click", function() {
+            const href = div.getAttribute("data-href");
+            if (href) {
+                window.location.href = href; // Chuyển hướng đến liên kết
+            }
+        });
+    });
+});
+    </script>
+</head>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Oi&display=swap');
+html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+.nav {
+    height: 10%;
+    background-color: #bbbbbb;
+    display: flex;
+    align-items: center;
+ }
+
+ .main {
+    height: 90%;
+    display: flex;
+    overflow-y: auto; 
+ }
+
+ .main .menu-left {
+    width: 12%;
+    font-size: 14px;
+    height: 220%;
+    background-color: #d5d5d5;
+ }
+ .footer {
+    height: 5%;
+    background-color: #bbbbbb ;
+ }
+
+ .menu-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+ .menu-left .avatar img {
+    border-radius: 100px;
+    width: 60%;
+    height: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+ }
+
+ .avatar {
+    display: flex;
+    margin-top: 15px;
+    justify-content: center;
+ }
+
+ .hello{
+    font-weight: 600;
+    font-size: 16px;
+ }
+ .sub-menu {
+    margin-bottom: 10px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+ }
+
+ .sub-menu a {
+    text-decoration: none;
+    margin-left: 5px;
+    color:black;
+    font-weight: 900;
+ }
+
+ .selected {
+    background-color: #c17400; /* Màu nền khi được chọn */
+    color: white; /* Màu chữ khi được chọn */
+}
+ .menu {
+    margin-top: 10%;
+    width: 100%;
+ }
+
+.sub {
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+    font-size: 16px;
+}
+.sub-menu.active {
+    background-color: #c17400; /* Màu nền bạn muốn khi dropdown được mở */
+}
+.sub-menu {
+    background-color: #d5d5d5;
+}
+.sub-menu:hover {
+    background-color: #c17400; /* Màu nền khi hover */
+}
+
+.sub-menu:hover a {
+    color: #ffff;
+}
+
+.sub-menu:hover i {
+    color: #ffff;
+}
+
+.dropdown {
+    display: none; /* Ẩn danh sách con ban đầu */
+    list-style-type: none;
+    margin-left: 30%;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    max-height: 0; /* Ban đầu ẩn đi với max-height = 0 */
+}
+
+.dropdown li {
+    margin-top: 5px;
+}
+.dropdown-toggle.selected a:hover {
+    color:black;
+    font-weight: 800;
+}
+.sub-menu:hover .dropdown {
+    display: block;
+}
+.dropdown-toggle.selected {
+    background-color: #c17400;
+    color: white;
+}
+
+.dropdown-toggle.selected a {
+    color: white;
+}
+
+#arrow {
+    margin-left: 60%;
+}
+</style>
+<body>
+    <div class="nav">
+            <div class="title">
+                <a href="../model/index.php" class="" style="font-family:Bungee Spice; font-size: 150%; text-decoration: none">STOCKTRACK</a>
+            </div>
+    
+    </div>
+
