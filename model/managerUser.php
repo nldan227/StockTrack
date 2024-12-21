@@ -357,7 +357,7 @@ if(isset($_SESSION['id'])){
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Usernamecolen1010 </th>
+                            <th>Usernamecolen1010diemdiem </th>
                             <th>Họ tên</th>
                             <th>Số điện thoại</th>
                             <th>Vai Trò</th>
