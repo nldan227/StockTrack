@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TrackStock</title>
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -237,10 +237,28 @@ if(isset($_SESSION['id'])){
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!emailRegex.test(email)) {
-            errorSpan.textContent = "Email sai định dạng.";
-        } else {
-            errorSpan.textContent = "";
-        }
+        errorSpan.textContent = "Email sai định dạng.";
+    } else {
+        // Kiểm tra nếu email đã tồn tại
+        fetch("../backend/checkEmail.php?email=" + encodeURIComponent(email))
+            .then((response) => response.text())
+            .then((data) => {
+                if (data === "exists") {
+                    errorSpan.textContent = "Email đã được sử dụng.";
+                } else {
+                    // Gửi yêu cầu kiểm tra email có tồn tại thực sự
+                    fetch("../backend/verifyEmail.php?email=" + encodeURIComponent(email))
+                        .then((response) => response.text())
+                        .then((data) => {
+                            if (data === "invalid") {
+                                errorSpan.textContent = "Email không tồn tại.";
+                            } else {
+                                errorSpan.textContent = "";
+                            }
+                        });
+                }
+            });
+    }
     });
 });
 </script>
