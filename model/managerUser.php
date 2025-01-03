@@ -231,35 +231,35 @@ if(isset($_SESSION['id'])){
     });
 
     // // Kiểm tra Email
-    // emailInput.addEventListener("blur", function () {
-    //     const errorSpan = document.getElementById("email-error");
-    //     const email = emailInput.value.trim();
-    //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    emailInput.addEventListener("blur", function () {
+        const errorSpan = document.getElementById("email-error");
+        const email = emailInput.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    //     if (!emailRegex.test(email)) {
-    //     errorSpan.textContent = "Email sai định dạng.";
-    // } else {
-    //     // Kiểm tra nếu email đã tồn tại
-    //     fetch("../backend/checkEmail.php?email=" + encodeURIComponent(email))
-    //         .then((response) => response.text())
-    //         .then((data) => {
-    //             if (data === "exists") {
-    //                 errorSpan.textContent = "Email đã được sử dụng.";
-    //             } else {
-    //                 // Gửi yêu cầu kiểm tra email có tồn tại thực sự
-    //                 fetch("../backend/verifyEmail.php?email=" + encodeURIComponent(email))
-    //                     .then((response) => response.text())
-    //                     .then((data) => {
-    //                         if (data === "invalid") {
-    //                             errorSpan.textContent = "Email không tồn tại.";
-    //                         } else {
-    //                             errorSpan.textContent = "";
-    //                         }
-    //                     });
-    //             }
-    //         });
-    // }
-    // });
+        if (!emailRegex.test(email)) {
+        errorSpan.textContent = "Email sai định dạng.";
+    } else {
+        // Kiểm tra nếu email đã tồn tại
+        fetch("../backend/checkEmail.php?email=" + encodeURIComponent(email))
+            .then((response) => response.text())
+            .then((data) => {
+                if (data === "exists") {
+                    errorSpan.textContent = "Email đã được sử dụng.";
+                } else {
+                    // Gửi yêu cầu kiểm tra email có tồn tại thực sự
+                    fetch("../backend/verifyEmail.php?email=" + encodeURIComponent(email))
+                        .then((response) => response.text())
+                        .then((data) => {
+                            if (data === "invalid") {
+                                errorSpan.textContent = "Email không tồn tại.";
+                            } else {
+                                errorSpan.textContent = "";
+                            }
+                        });
+                }
+            });
+    }
+    });
 });
 </script>
 </head>
